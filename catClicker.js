@@ -54,9 +54,14 @@ var counter = [0,0,0,0,0];
 			})(i));         
 
 			elem.appendChild(img);
-			elem.style.float = "left";//alinha horizontalmente as imagens
-			elem.style.visibility = "hidden";
+			//elem.style.float = "left";//alinha horizontalmente as imagens
+			//elem.style.visibility = "hidden";
 			imageList.append(elem);
+		}
+
+		//para esconder os elementos, precisa ser depois de anexar os elementos a pagina
+		for(var i=0; i<vis.length;i++){
+			imageList.find("#"+vis[i]).hide();
 		}
 	}
 
@@ -82,13 +87,14 @@ var counter = [0,0,0,0,0];
 		var images = $("#image-list"); 
 		//debugger;
 		//always gives you a nodeList object, that's why we need to get the first element '[0]'
-		images.find("#"+this.id)[0].style.visibility = "visible";
+		//images.find("#"+this.id)[0].style.visibility = "visible";
+		images.find("#"+this.id).show();
 
 		for(var i=0; i<vis.length; i++){
-			if(vis[i]!=this.id){
-				
+			if(vis[i]!=this.id){				
 				console.debug(vis[i]);
-				images.find("#"+vis[i])[0].style.visibility = "hidden";
+				//images.find("#"+vis[i])[0].style.visibility = "hidden";
+				images.find("#"+vis[i]).hide();
 			}//end if
 		}//end for
 
